@@ -15,6 +15,7 @@ const player = new Player(x, y, 10, 'white')
 const players = {}
 
 socket.on('updatePlayers', (backendPlayers) => {
+  socket.emit("players", (players))
   for (const id in backendPlayers)
   {
     const backendPlayer = backendPlayers[id]
