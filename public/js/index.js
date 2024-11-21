@@ -33,7 +33,6 @@ function animate() {
   c.fillStyle = 'rgba(0, 0, 0, 0.1)'
   c.fillRect(0, 0, canvas.width, canvas.height)
   c.fillStyle(255,0,0)
-
   for (const id in players)
   {
     const player = player[id]
