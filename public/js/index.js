@@ -20,6 +20,7 @@ socket.on('updatePlayers', (backendPlayers) => {
 
     if (!players[id]) {
       players[id] = new Player(backendPlayer.x, backendPlayer.y, 10, 'white')
+      console.log(players[id])
     }
   }
 })
@@ -30,12 +31,14 @@ function animate() {
   animationId = requestAnimationFrame(animate)
   c.fillStyle = 'rgba(0, 0, 0, 0.1)'
   c.fillRect(0, 0, canvas.width, canvas.height)
-  
+
   for (const id in players)
   {
     const player = player[id]
     player.draw()
   }
+  player1.draw()
+  player2.draw()
 }
 
 animate()
