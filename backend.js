@@ -22,7 +22,8 @@ io.on('connection', (socket) => {
   console.log('a user connected');
   backEndPlayer[socket.id] = {
     x:500 * Math.random(),
-    y:100
+    y:500 * Math.random(),
+    color: 'hsl('+360*Math.random()+',100%,50%)'
   }
 
   io.emit('updatePlayers', backEndPlayer)
