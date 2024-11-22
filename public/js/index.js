@@ -34,7 +34,7 @@ function animate() {
 
   for (const id in players)
   {
-    const player = player[id]
+    const player = players[id]
     player.draw()
   }
 }
