@@ -15,22 +15,22 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html')
 })
 
-const players = {}
+const backEndPlayer = {}
 
 
 io.on('connection', (socket) => {
   console.log('a user connected');
-  players[socket.id] = {
+  backEndPlayer[socket.id] = {
     x:500 * Math.random(),
     y:100
   }
 
-  io.emit('updatePlayers', players)
+  io.emit('updatePlayers', backEndPlayer)
 
   socket.on('disconnect', (reason) => {
     console.log(reason);
-    delete players[socket.id]
-    io.emit('updatePlayers', players)
+    delete backEndPlayer[socket.id]
+    io.emit('updatePlayers', backEndPlayer)
   })
 });
 
