@@ -19,11 +19,11 @@ socket.on('updatePlayers', (backendPlayers) => {
     const backendPlayer = backendPlayers[id]
 
     if (!players[id]) {
-      /*players[id] = new Player({x:backendPlayer.x,
+      players[id] = new Player({x:backendPlayer.x,
         y:backendPlayer.y,
         radius:10,
-        color:'white'})*/
-        players[id] = new Player(backendPlayer.x,backendPlayer.y,10,'white')
+        color:'white'})
+      //  players[id] = new Player(backendPlayer.x,backendPlayer.y,10,'white')
       }
   }
 
