@@ -27,7 +27,11 @@ io.on('connection', (socket) => {
 
   io.emit('updatePlayers', players)
 
-  console.log(players)
+  socket.on('disconnect', (reason) => {
+    console.log(reason);
+    delete players[socket.id]
+    io.emit('updatePlayers', players)
+  })
 });
 
 server.listen(port, () => {
