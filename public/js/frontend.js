@@ -25,6 +25,9 @@ socket.on('updatePlayers', (backendPlayers) => {
         y:backendPlayer.y,
         radius:10,
         color:backendPlayer.color})
+      }else{
+        frontEndPlayers[id].x = backendPlayer.x
+        frontEndPlayers[id].y = backendPlayer.y
       }
   }
 
@@ -58,19 +61,19 @@ window.addEventListener ('keydown', (e) => {
   if (!frontEndPlayers[socket.id]) return
   switch (e.key) {
     case 'w':
-    //frontEndPlayers[socket.id].y -= 5
+    frontEndPlayers[socket.id].y -= 5
     socket.emit('keydown', 'w')
     break
     case 'a':
-    //frontEndPlayers[socket.id].x -=5
+    frontEndPlayers[socket.id].x -=5
     socket.emit('keydown', 'a')
     break
     case 's':
-   // frontEndPlayers[socket.id].y += 5
+    frontEndPlayers[socket.id].y += 5
     socket.emit('keydown', 's')
     break
     case 'd':
-   // frontEndPlayers[socket.id].x +=5
+    frontEndPlayers[socket.id].x +=5
     socket.emit('keydown', 'd')
     break
   }

@@ -37,24 +37,24 @@ io.on('connection', (socket) => {
   socket.on('keydown', (key) => {
     switch (key) {
       case 'w':
-      //frontEndPlayers[socket.id].y -= 5
       backEndPlayers[socket.id].y -= 5
       break
       case 'a':
-      //frontEndPlayers[socket.id].x -=5
       backEndPlayers[socket.id].x -= 5
       break
       case 's':
-     // frontEndPlayers[socket.id].y += 5
      backEndPlayers[socket.id].y += 5
       break
       case 'd':
-     // frontEndPlayers[socket.id].x +=5
      backEndPlayers[socket.id].x += 5
       break
     }
   })
 });
+
+setInterval( () => {
+  io.emit('updatePlayers', backEndPlayers)
+}, 60)
 
 server.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
