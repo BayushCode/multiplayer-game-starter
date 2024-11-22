@@ -1,3 +1,6 @@
-This is a starter project for the [Chris Courses Online Multiplayer Game Tutorial](https://www.youtube.com/watch?v=Wcvqnx14cZA) available on YouTube.
+please ignore the very bad commit messages, cheatsheet:
+h: just did stuff
+k: fixed bugs
+g: cannot describe
 
-To get started, download this repo and double click `index.html` to see the single-player game we'll base our multiplayer-game off of.
+starter projects was from ChrisCourses
