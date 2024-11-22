@@ -53,3 +53,25 @@ function animate() {
 }
 
 animate()
+
+window.addEventListener ('keydown', (e) => {
+  if (!frontEndPlayers[socket.id]) return
+  switch (e.key) {
+    case 'w':
+    //frontEndPlayers[socket.id].y -= 5
+    socket.emit('keydown', 'w')
+    break
+    case 'a':
+    //frontEndPlayers[socket.id].x -=5
+    socket.emit('keydown', 'a')
+    break
+    case 's':
+   // frontEndPlayers[socket.id].y += 5
+    socket.emit('keydown', 's')
+    break
+    case 'd':
+   // frontEndPlayers[socket.id].x +=5
+    socket.emit('keydown', 'd')
+    break
+  }
+})
