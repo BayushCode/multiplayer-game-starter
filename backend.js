@@ -16,7 +16,8 @@ app.get('/', (req, res) => {
 })
 
 const backEndPlayers = {}
-
+const projectilesBackEnd = {}
+let projectileID = 0
 
 io.on('connection', (socket) => {
   console.log('a user connected');
@@ -24,7 +25,6 @@ io.on('connection', (socket) => {
     x:500 * Math.random(),
     y:500 * Math.random(),
     color: 'hsl('+360*Math.random()+',100%,50%)',
-    it: false
   }
 
   io.emit('updatePlayers', backEndPlayers)
@@ -33,6 +33,22 @@ io.on('connection', (socket) => {
     console.log(reason);
     delete backEndPlayers[socket.id]
     io.emit('updatePlayers', backEndPlayers)
+  })
+
+  socket.on("shoot", (x,y,angle) => {
+    projectileID++
+
+    const velocity = {
+      x: Math.cos(angle) * 5,
+      y: Math.sin(angle) * 5
+    }
+
+    backEndProjectiles[projectileId] = {
+      x,
+      y,
+      velocity,
+      playerId: socket.id
+    }
   })
 
   socket.on('keydown', (key) => {
@@ -54,6 +70,11 @@ io.on('connection', (socket) => {
 });
 
 setInterval( () => {
+  for (const id in backEndProjectiles) {
+    backEndProjectiles[id].x += backEndProjectiles[id].velocity.x
+    backEndProjectiles[id].y += backEndProjectiles[id].velocity.y
+  }
+
   io.emit('updatePlayers', backEndPlayers)
 }, 15)
 
