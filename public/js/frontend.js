@@ -164,11 +164,11 @@ window.addEventListener ('keyup', (e) => {
 })
 
 window.addEventListener("mousemove", (e) => {
-  mouse.x = e.clientX
-  mouse.y = e.clientY
+  mouse.x = e.clientX * devicePixelRatio
+  mouse.y = e.clientY * devicePixelRatio
 
   c.beginPath()
-  c.moveTo(currentPlayer.x,currentPlayer.y)
+  c.moveTo(frontEndPlayers[socket.id].x,frontEndPlayers[socket.id].y)
   //c.moveTo(0,0)
   c.lineTo(mouse.x,mouse.y)
   c.lineWidth = 5
