@@ -8,12 +8,14 @@ addEventListener('click', (event) => {
   }
   
   const angle = Math.atan2(
-    event.clientY - top - playerPosition.y,
-    event.clientX - left - playerPosition.x
+    event.clientY * devicePixelRatio - top - playerPosition.y,
+    event.clientX * devicePixelRatio - left - playerPosition.x
   )
   
-
-  socket.emit('shoot', {x:playerPosition.x,y:playerPosition.y,angle})
+  if (frontEndPlayers[socket.id].type == "single")
+  {
+    socket.emit('shoot', {x:playerPosition.x,y:playerPosition.y,angle})
+  }
   //projectiles.push(
     //new Projectile(canvas.width / 2, canvas.height / 2, 5, 'white', velocity)
   //)

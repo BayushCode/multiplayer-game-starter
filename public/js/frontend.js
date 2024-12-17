@@ -7,8 +7,8 @@ const scoreEl = document.querySelector('#scoreEl')
 
 const devicePixelRatio = window.devicePixelRatio || 1;
 
-canvas.width = innerWidth * devicePixelRatio
-canvas.height = innerHeight * devicePixelRatio
+canvas.width = devicePixelRatio * window.innerWidth
+canvas.height = devicePixelRatio * window.innerHeight
 
 const x = canvas.width / 2
 const y = canvas.height / 2
@@ -34,8 +34,13 @@ socket.on('updateProjectiles', (backEndProjectiles) =>{
         velocity: backEndProjectile.velocity
       })
     } else {
-      frontEndProjectiles[id].x += backEndProjectiles[id].velocity.x
-      frontEndProjectiles[id].y += backEndProjectiles[id].velocity.y
+      frontEndProjectiles[id].x += backEndProjectiles[id].velocity.x 
+      frontEndProjectiles[id].y += backEndProjectiles[id].velocity.y 
+    }
+  }
+  for (const frontEndProjectileId in frontEndProjectiles) {
+    if (!backEndProjectiles[frontEndProjectileId]) {
+      delete frontEndProjectiles[frontEndProjectileId]
     }
   }
 })
@@ -71,7 +76,7 @@ function animate() {
   c.fillStyle = 'rgba(0, 0, 0, 0.1)'
   c.fillRect(0, 0, canvas.width, canvas.height)
 
-
+  
 
   for (const id in frontEndPlayers)
   {
@@ -169,7 +174,6 @@ window.addEventListener("mousemove", (e) => {
 
   c.beginPath()
   c.moveTo(frontEndPlayers[socket.id].x,frontEndPlayers[socket.id].y)
-  //c.moveTo(0,0)
   c.lineTo(mouse.x,mouse.y)
   c.lineWidth = 5
   c.strokeStyle = "rgba(255,255,255,0.5)"

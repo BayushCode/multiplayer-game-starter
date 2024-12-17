@@ -25,7 +25,7 @@ io.on('connection', (socket) => {
     x:500 * Math.random(),
     y:500 * Math.random(),
     color: 'hsl('+360*Math.random()+',100%,50%)',
-    it: false
+    type: "single"
   }
 
   io.emit('updatePlayers', backEndPlayers)
@@ -40,8 +40,8 @@ io.on('connection', (socket) => {
     projectileId++
 
     const velocity = {
-      x: Math.cos(angle) * 5,
-      y: Math.sin(angle) * 5
+      x: Math.cos(angle) * 15,
+      y: Math.sin(angle) * 15
     }
 
     backEndProjectiles[projectileId] = {
