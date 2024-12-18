@@ -53,7 +53,8 @@ socket.on('updatePlayers', (backendPlayers) => {
       frontEndPlayers[id] = new Player({x:backendPlayer.x,
         y:backendPlayer.y,
         radius:10,
-        color:backendPlayer.color})
+        color:backendPlayer.color,
+        type: backendPlayer.type})
       }else{
         frontEndPlayers[id].x = backendPlayer.x
         frontEndPlayers[id].y = backendPlayer.y
