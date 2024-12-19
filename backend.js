@@ -40,10 +40,11 @@ io.on('connection', (socket) => {
     projectileId++
 
     const velocity = {
-      x: Math.cos(angle) * 15,
-      y: Math.sin(angle) * 15
+      x: Math.cos(angle) * 10,
+      y: Math.sin(angle) * 10
     }
-
+    console.log(Math.cos(angle))
+    console.log(Math.sin(angle))
     const lifespan = 500
 
     backEndProjectiles[projectileId] = {
