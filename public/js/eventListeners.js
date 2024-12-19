@@ -13,14 +13,14 @@ addEventListener('click', (event) => {
   ) * 180) / Math.PI
 
   
-  if (frontEndPlayers[socket.id].type == 2)
+  if (frontEndPlayers[socket.id].type == 1)
   {
     for (let index = 0; index < 5; index++) {
-      const angle = Math.atan2(
-        (event.clientY + index*10) * devicePixelRatio - top - playerPosition.y,
-        (event.clientX + index*10) * devicePixelRatio - left - playerPosition.x
-      ) * (180 / Math.PI)
-      
+      let angle = (Math.atan2(
+        event.clientY * devicePixelRatio - top - playerPosition.y,
+        event.clientX * devicePixelRatio - left - playerPosition.x
+      ) * 180) / Math.PI
+      angle+=index*5
       socket.emit('shoot', {x:playerPosition.x,y:playerPosition.y,angle})
     }
   }else{

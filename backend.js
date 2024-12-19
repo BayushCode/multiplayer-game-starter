@@ -36,17 +36,22 @@ io.on('connection', (socket) => {
     io.emit('updatePlayers', backEndPlayers)
   })
 
+  const degreesToRadians = (degrees) => {
+    return degrees * (Math.PI / 180);
+  };
+  
+
   socket.on('shoot', ({x,y,angle}) => {
     projectileId++
 
-    //const angle1 = Math.round(angle)
+    const angleInRadians = degreesToRadians(angle)
 
     console.log(angle)
-    console.log(Math.cos(45))
+    console.log(Math.cos(angleInRadians))
 
     const velocity = {
-      x: Math.cos(angle) *10,
-      y: Math.sin(angle) *10
+      x: Math.cos(angleInRadians) *10,
+      y: Math.sin(angleInRadians) *10
     }
     
     const lifespan = 500
