@@ -169,6 +169,36 @@ window.addEventListener ('keyup', (e) => {
   }
 })
 
+const upButton = document.getElementById("upButton");
+const leftButton = document.getElementById("leftButton");
+const rightButton = document.getElementById("rightButton");
+const downButton = document.getElementById("downButton");
+
+upButton.addEventListener("pointerdown", (e) => {
+  if(e.pointerType === "touch")  keys.w.pressed = true
+})
+upButton.addEventListener("pointerup", (e) => {
+  if(e.pointerType === "touch")keys.w.pressed = false
+})
+leftButton.addEventListener("pointerdown", (e) => {
+  if(e.pointerType === "touch")keys.a.pressed = true
+})
+leftButton.addEventListener("pointerup", (e) => {
+  if(e.pointerType === "touch")keys.a.pressed = false
+})
+downButton.addEventListener("pointerdown", (e) => {
+  if(e.pointerType === "touch")keys.s.pressed = true
+})
+downButton.addEventListener("pointerup", (e) => {
+  if(e.pointerType === "touch")keys.s.pressed = false
+})
+rightButton.addEventListener("pointerdown", (e) => {
+  if(e.pointerType === "touch")keys.d.pressed = true
+})
+rightButton.addEventListener("pointerup", (e) => {
+  if(e.pointerType === "touch")keys.d.pressed = false
+})
+
 window.addEventListener("mousemove", (e) => {
   mouse.x = e.clientX * devicePixelRatio
   mouse.y = e.clientY * devicePixelRatio

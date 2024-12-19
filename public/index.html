@@ -12,6 +12,15 @@
       p {
         color: white;
       }
+
+      * {
+        -webkit-user-select: none; 
+        user-select: none;
+      }
+
+      .button {
+        padding:2px;
+      }
     </style>
   </head>
   <body>
@@ -27,13 +36,15 @@
     >
       <span>Score: <span id="scoreEl">0</span></span>
     </div>
-    <div id="buttonContainer" style="position: fixed; padding:40px;">
+    <div id="buttonContainer" style="position: fixed; padding:40px; -webkit-user-select: none; user-select: none;">
       <div>
-        <p id="upButton">up</p>
-        <div>
-          <p id="leftButton">left</p>
-          <p id="downButton">down</p>
-          <p id="rightButton">right</p>
+        <div style="width: 100%; display: flex; justify-content: center;">
+          <p id="upButton">up</p>
+        </div>
+        <div style ="display: flex; flex-direction: row;">
+          <p id="leftButton" class="button">left</p>
+          <p id="downButton" class="button">down</p>
+          <p id="rightButton" class="button">right</p>
         </div>
       </div>
     </div>
