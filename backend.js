@@ -25,7 +25,7 @@ io.on('connection', (socket) => {
     x:500 * Math.random(),
     y:500 * Math.random(),
     color: 'hsl('+360*Math.random()+',100%,50%)',
-    type: "single"
+    type: 1
   }
 
   io.emit('updatePlayers', backEndPlayers)
@@ -44,12 +44,18 @@ io.on('connection', (socket) => {
       y: Math.sin(angle) * 15
     }
 
+    const lifespan = 500
+
     backEndProjectiles[projectileId] = {
       x,
       y,
       velocity,
       playerId: socket.id
     }
+    
+    projectileTimeout = setTimeout(function(){
+      delete backEndProjectiles[projectileId]
+      console.log("deleted " + projectileId)}, lifespan)
   })
 
   socket.on('keydown', (key) => {
@@ -69,6 +75,8 @@ io.on('connection', (socket) => {
     }
   })
 });
+
+
 
 setInterval( () => {
   io.emit('updateProjectiles', backEndProjectiles)
